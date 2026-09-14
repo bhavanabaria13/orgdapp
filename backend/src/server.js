@@ -47,16 +47,4 @@ app.use((err, _req, res, _next) => {
   res.status(err.status || 500).json({ error: err.message || "Server error" });
 });
 
-async function bootstrap() {
-  await seedAdmin();
-  await seedCategories();
-  await seedDemoContent();
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`[api] listening on 0.0.0.0:${PORT}`);
-  });
-}
-
-bootstrap().catch((e) => {
-  console.error("Fatal bootstrap error", e);
-  process.exit(1);
-});
+export default app;
